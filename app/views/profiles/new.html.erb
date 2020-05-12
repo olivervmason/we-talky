@@ -1,0 +1,56 @@
+<h1>Create a new profile - html page</h1>
+
+<p>Please add your details in the form below. Note the items with an *asterisk are mandatory. </p>
+
+<%= form_with model: @profile,local: true do |form|  %>
+
+    <div>*
+        <%= form.label :User %>
+        <%= form.text_field :user %>
+    </div>
+
+    <div>*
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.label :target_language %>
+        <%= form.text_field :target_language %>
+    </div>
+
+    <div>*
+        <%= form.label :native_language %>
+        <%= form.text_field :native_language %>
+    </div>
+
+    <div>*
+        <%= form.label :nationality %>
+        <%= form.text_field :nationality %>
+    </div>
+
+    <div>
+        <%= form.label :nearest_city %>
+        <%= form.text_field :nearest_city %>
+    </div>
+
+    <div>
+        <%= form.label :preferred_platform %>
+        <%= form.text_field :preferred_platform %>
+    </div>
+
+    <div>
+        <%= form.label :interests %>
+        <%= form.text_field :interests %>
+    </div>
+
+    <div>*
+        <%= form.label :profile_description %>
+        <%= form.text_area :profile_description %>
+    </div>    
+
+    <div>
+        <%= form.submit value: "Click to save profile" %>
+    </div>
+
+<% end %>
