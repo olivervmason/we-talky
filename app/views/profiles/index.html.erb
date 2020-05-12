@@ -1,1 +1,9 @@
 <h1>Index html page - user profiles!<h1>
+
+<% for profile in @profiles %>
+    <li><%= link_to profile.name %> is 
+    <%= profile.nationality %> and is learning
+    <%= profile.target_language %></li>
+
+    <br/>
+<% end %>
