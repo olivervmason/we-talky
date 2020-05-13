@@ -1,0 +1,25 @@
+<h1> <%= @profile.name %>'s profile</h1>
+
+<%= link_to "All user profiles", profiles_path%>
+
+<% if current_user.id == @profile.user_id%>
+    <h3>Update your profile</h3>
+    <h3>Delete your profile</h3>
+<% end %>
+
+<br/><br/>
+
+<% if @profile.picture.attached? %>
+    <%= image_tag @profile.picture, style: "width: 350px"%>
+<% end %>
+
+<ul>
+    <li>Language(s) being studied: <%= @profile.target_language %> </li>
+    <li>Native language: <%= @profile.native_language %> </li>
+    <li>Nationality <%= @profile.nationality %> </li>
+    <li>Nearest city: <%= @profile.nearest_city %> </li>
+    <li>Favourite platforms: <%= @profile.preferred_platform %> </li>
+    <li>Top interests: <%= @profile.interests %> </li>
+    <li>Contact email: <%= @profile.user.email %></li>
+    <li>Personal statement: <%= @profile.profile_description %> </li>
+</ul>

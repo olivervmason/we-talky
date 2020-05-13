@@ -1,11 +1,6 @@
-<p>Please add your details in the form below. Note the items with an *asterisk are mandatory. </p>
+<p>Please add your details in the form below. <br> Note the items with an *asterisk are mandatory. </p>
 
 <%= form_with model: @profile, local: true do |form|  %>
-
-    <div>*
-        <%# <%= form.label :user %> %>
-        <%# <%= form.text_field :user, value: current_user.id %> %>
-    </div>
 
     <div>*
         <%= form.label :name %>
@@ -56,5 +51,14 @@
     <div>
         <%= form.submit value: "Click to save profile" %>
     </div>
+
+<% if profile.errors.any? %>
+    <p style="color:red">It looks like there was some information missing from the form you submitted:</p>
+    <ul>
+        <% profile.errors.full_messages.each do |error| %>
+            <li style="color:red" > <%= error %> </li>
+        <%end %>
+    </ul>
+<% end %>
 
 <% end %>
