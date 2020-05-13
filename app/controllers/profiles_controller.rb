@@ -23,7 +23,6 @@ class ProfilesController < ApplicationController
         else
             redirect_to profile_path
         end
-
     end
 
     def show
