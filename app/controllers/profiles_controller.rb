@@ -13,9 +13,13 @@ class ProfilesController < ApplicationController
     end
 
     def create
+        if current_user.profile
+            return "error"
+        else
         # render json: params
-        @profile = Profile.create(profile_parameters)
-        puts @profile.errors.full_messages
+        current_user.create_profile(profile_parameters)
+        end
+        # puts @profile.errors.full_messages
         # if (@profile.errors.any?)
         #    # populate later         
         # end
@@ -37,12 +41,13 @@ class ProfilesController < ApplicationController
     private
 
     def profile_parameters
-        params.require(:user)
-        params.require(:name)
-        params.require(:native_language)
-        params.require(:target_language)
-        params.require(:nationality)
-        params.permit(:nearest_city, :preferred_platform, :interests, :profile_description, :picture)
+        # params.require(:user)
+        # params.require(:name)
+        # params.require(:native_language)
+        # params.require(:target_language)
+        # params.require(:nationality)
+        params.require(:profile).permit(:name, :native_language, :target_language, :nationality)
+        # params.permit(:nearest_city, :preferred_platform, :interests, :profile_description, :picture)
     end
 
 end
