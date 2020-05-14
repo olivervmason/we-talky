@@ -2,17 +2,4 @@
 <% @title="Edit profile" %>
 <h1>Edit your profile!</h1>
 
-<ul>
-    <li><%= link_to "View all profiles", profiles_path %></li>
-        <%if current_user.profile %>
-            <li><%= link_to "Edit my profile", edit_profile_path(@myprofile.id)%></li>
-        <% else %>
-            <li><%= link_to "Create new profile", new_profile_path %></li>
-        <% end %>
-    <li>View exchanges</li>
-    <li>Create exchange</li>
-    <li>Logout</li>
-    <li>Donate</li>
-</ul>
-
 <%= render "form", profile: @profile %>
