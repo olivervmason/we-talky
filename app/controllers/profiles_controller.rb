@@ -22,12 +22,13 @@ class ProfilesController < ApplicationController
         if @profile.errors.any? 
             render "new"
         else
-            redirect_to profiles_path
+            redirect_to profile_path(@profile.id)
         end
     end
 
     def show
         @profile = Profile.find(params["id"])
+        @myprofile = current_user.profile
     end
 
     def edit
@@ -71,6 +72,14 @@ class ProfilesController < ApplicationController
 
     def profile_parameters
         params.require(:profile).permit(:name, :native_language, :target_language, :nationality, :nearest_city, :preferred_platform, :interests, :profile_description, :picture)
+    end
+
+    def rerender_if_error(template_name)
+        if @profile.errors.any?
+            render template_name
+        else
+            redirect_to profile_path(@profile.id)
+        end
     end
 
 end
