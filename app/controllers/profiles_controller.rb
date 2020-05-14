@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
 
     def new
         @profile = Profile.new
+        @myprofile = current_user.profile
     end
 
     def create
@@ -22,17 +23,19 @@ class ProfilesController < ApplicationController
         if @profile.errors.any? 
             render "new"
         else
-            redirect_to profiles_path
+            redirect_to profile_path(@profile.id)
         end
     end
 
     def show
         @profile = Profile.find(params["id"])
+        @myprofile = current_user.profile
     end
 
     def edit
         # @profile = Profile.find(params["id"])
         @profile = current_user.profile
+        @myprofile = current_user.profile
         puts @profile.id
         puts params["id"]
         if params["id"] == @profile.id.to_s
@@ -60,17 +63,25 @@ class ProfilesController < ApplicationController
     end
 
     def destroy
-        render json: "Destroy method"
-        # if @profile
-        #     @profile.destroy
-        # end
-        # redirect_to listings_path
+        # render json: "Destroy method"
+        if @profile = current_user.profile
+            @profile.destroy
+        end
+        redirect_to profiles_path
     end
 
     private
 
     def profile_parameters
         params.require(:profile).permit(:name, :native_language, :target_language, :nationality, :nearest_city, :preferred_platform, :interests, :profile_description, :picture)
+    end
+
+    def rerender_if_error(template_name)
+        if @profile.errors.any?
+            render template_name
+        else
+            redirect_to profile_path(@profile.id)
+        end
     end
 
 end

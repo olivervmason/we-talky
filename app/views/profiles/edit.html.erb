@@ -2,4 +2,27 @@
 <% @title="Edit profile" %>
 <h1>Edit your profile!</h1>
 
+<ul>
+    <li><%= link_to "View all profiles", profiles_path %></li>
+        <%if current_user.profile %>
+            <li><%= link_to "View my profile", profile_path(@myprofile.id)%></li>
+          <% else %>
+            <li><%= link_to "Create new profile", new_profile_path %></li>
+        <% end %>
+    <li>View exchanges</li>
+    <li>Create exchange</li>
+    <li>Logout</li>
+    <li>Donate</li>
+</ul>
+
 <%= render "form", profile: @profile %>
+
+</br>
+
+<% if current_user.id == @profile.user.id %>
+    <%= form_with model: @profile, local: true, method: "delete" do |form| %>
+        <%= submit_tag "DELETE" %>
+    <% end %>
+<% end %>
+
+<p style="color:red">Delete permanently deletes your profile data, but not your user login. You can still return to the site and create a new profile.</p>

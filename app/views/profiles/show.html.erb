@@ -7,8 +7,6 @@
     </br>
 <% if current_user.id == @profile.user_id%>
     <%= link_to "Edit your profile", edit_profile_path(@myprofile.id)%>
-    </br>
-    <%= link_to "Delete your profile", edit_profile_path(@myprofile.id)%>
 <% end %>
 
 <br/><br/>
