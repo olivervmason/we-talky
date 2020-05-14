@@ -3,14 +3,17 @@
 <h1>Index html page - user profiles!</h1>
 
 <ul>
-    <li><%= link_to "View all profiles", profiles_path%></li>
-    <li><%= link_to "UPDATE Edit my profile", profiles_path%></li>
-    <li>Search exchanges</li>
+    <li><%= link_to "View all profiles", profiles_path %></li>
+        <%if current_user.profile %>
+            <li><%= link_to "Edit my profile", edit_profile_path(@myprofile.id)%></li>
+        <% else %>
+            <li><%= link_to "Create new profile", new_profile_path %></li>
+        <% end %>
+    <li>View exchanges</li>
+    <li>Create exchange</li>
     <li>Logout</li>
     <li>Donate</li>
 </ul>
-
-    
 
 
 <% for profile in @profiles %>

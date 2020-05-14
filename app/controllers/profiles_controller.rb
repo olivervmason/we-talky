@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
 
     def index
         @profiles = Profile.all
+        @myprofile = current_user.profile
     end
 
     def new
@@ -21,7 +22,7 @@ class ProfilesController < ApplicationController
         if @profile.errors.any? 
             render "new"
         else
-            redirect_to profile_path
+            redirect_to profiles_path
         end
     end
 
@@ -38,22 +39,32 @@ class ProfilesController < ApplicationController
             puts "here"
             render "edit"
         else
-            redirect_to profiles_path
+            redirect_to profile_path(@profile.id)
         end
     end
 
     def update
+        # render json: "Update method"
+        @profile = current_user.profile
         if @profile
-            @profile.update(listing_params)
+        #    render json: "@profile is true"
+            @profile.update(profile_parameters)
             puts @profile.errors.full_messages
             rerender_if_error("edit")
         else 
-            redirect_to profiles_path
+        #     redirect_to profiles_path
+            render json: "@profile is false"
+            puts @profile
+            puts "Look here ^^"
         end
     end
 
     def destroy
         render json: "Destroy method"
+        # if @profile
+        #     @profile.destroy
+        # end
+        # redirect_to listings_path
     end
 
     private
