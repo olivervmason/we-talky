@@ -6,11 +6,10 @@ Rails.application.routes.draw do
   get "/", to: "pages#home", as: "root"
 
   # Profiles
-  get "/profiles/:id", to: "profiles#show", as: "profile"
 
   get "/profiles", to: "profiles#index", as: "profiles" 
   get "/profiles/new", to: "profiles#new", as: "new_profile"
-  # get "/profiles/:id", to: "profiles#show", as: "profile"
+  get "/profiles/:id", to: "profiles#show", as: "profile"
   post "/profiles", to: "profiles#create"
   delete "/profiles/:id", to: "profiles#destroy"
 

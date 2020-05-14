@@ -30,9 +30,12 @@ class ProfilesController < ApplicationController
     end
 
     def edit
-        @profile = Profile.find(params["id"])
-        # @profile = current_user.profiles.find_by_id(params[:id])
-        if @profile 
+        # @profile = Profile.find(params["id"])
+        @profile = current_user.profile
+        puts @profile.id
+        puts params["id"]
+        if params["id"] == @profile.id.to_s
+            puts "here"
             render "edit"
         else
             redirect_to profiles_path
