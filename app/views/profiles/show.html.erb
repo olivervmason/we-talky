@@ -1,10 +1,12 @@
+<%= image_tag "WeTalky_Banner.png", style: "width: 350px", alt: "WeTalky banner" %>
+
 <% @title="#{@profile.name}'s Profile" %>
 <h1> <%= @profile.name %>'s profile</h1>
 
 <%= link_to "All user profiles", profiles_path%>
-
+</br></br>
 <% if current_user.id == @profile.user_id%>
-    <h3>Update your profile</h3>
+    <%= link_to "Edit your profile", edit_profile_path%>
     <h3>Delete your profile</h3>
 <% end %>
 
