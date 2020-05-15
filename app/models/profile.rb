@@ -7,4 +7,7 @@ class Profile < ApplicationRecord
   has_one :nationality
   has_one :city
   has_many :interests, through: :profile_interest
+#Doubts here!:
+  has_many :profile_languages
+  has_many :languages, through: :profile_languages
 end
