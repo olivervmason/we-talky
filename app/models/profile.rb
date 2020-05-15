@@ -4,4 +4,5 @@ class Profile < ApplicationRecord
   validates :name, :native_language, :target_language, :nationality , presence: true
   has_one_attached :picture
   has_one :language
+  has_one :nationality
 end
