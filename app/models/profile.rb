@@ -6,4 +6,5 @@ class Profile < ApplicationRecord
   has_one :language
   has_one :nationality
   has_one :city
+  has_many :interests, through: :profile_interest
 end

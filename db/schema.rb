@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_15_032318) do
+ActiveRecord::Schema.define(version: 2020_05_15_033344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(version: 2020_05_15_032318) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "interests", force: :cascade do |t|
+    t.string "interest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "languages", force: :cascade do |t|
     t.string "language"
     t.datetime "created_at", null: false
@@ -52,6 +58,15 @@ ActiveRecord::Schema.define(version: 2020_05_15_032318) do
     t.string "nationality"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "profile_interests", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.bigint "interest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interest_id"], name: "index_profile_interests_on_interest_id"
+    t.index ["profile_id"], name: "index_profile_interests_on_profile_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -83,5 +98,7 @@ ActiveRecord::Schema.define(version: 2020_05_15_032318) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "profile_interests", "interests"
+  add_foreign_key "profile_interests", "profiles"
   add_foreign_key "profiles", "users"
 end
