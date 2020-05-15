@@ -14,7 +14,7 @@
 
     <div>*
         <%= form.label :native_language %>
-        <%= form.text_field :native_language %>
+        <%= form.text_field :language %>
     </div>
 
     <div>*
@@ -75,12 +75,12 @@
         <%= form.submit value: "Click to save profile" %>
     </div>
 
-<% if profile.errors.any? %>
+    <% if profile.errors.any? %>
     <p style="color:red">It looks like there was some information missing from the form you submitted:</p>
     <ul>
         <% profile.errors.full_messages.each do |error| %>
             <li style="color:red" > <%= error %> </li>
-        <%end %>
+    <%end %>
     </ul>
 <% end %>
 

@@ -4,7 +4,7 @@ one:
   user: one
   name: MyString
   target_language: MyString
-  native_language: MyString
+  language: MyString
   nationality: MyString
   nearest_city: MyString
   preferred_platform: MyString
@@ -16,7 +16,7 @@ two:
   user: two
   name: MyString
   target_language: MyString
-  native_language: MyString
+  language: MyString
   nationality: MyString
   nearest_city: MyString
   preferred_platform: MyString

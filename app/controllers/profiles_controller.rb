@@ -73,7 +73,7 @@ class ProfilesController < ApplicationController
     private
 
     def profile_parameters
-        params.require(:profile).permit(:name, :native_language, :target_language, :nationality, :nearest_city, :preferred_platform, :interests, :profile_description, :picture)
+        params.require(:profile).permit(:name, :language, :target_language, :nationality, :nearest_city, :preferred_platform, :interests, :profile_description, :picture)
     end
 
     def rerender_if_error(template_name)

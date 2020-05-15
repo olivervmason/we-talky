@@ -4,7 +4,7 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.string :name
       t.string :target_language
-      t.string :native_language
+      t.string :language
       t.string :nationality
       t.string :nearest_city
       t.string :preferred_platform
