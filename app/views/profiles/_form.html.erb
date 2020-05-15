@@ -32,15 +32,38 @@
         <%= form.text_field :preferred_platform %>
     </div>
 
-    <div>
-        <%= form.label :interests %>
-        <%= form.text_field :interests %>
-    </div>
+    Interests:
+    <%= check_box_tag(:interests) %>
+    <%= label_tag(:interests, "Animals and pets") %>
+
+    <%= check_box_tag(:interests) %>
+    <%= label_tag(:interests, "Exercise and fitness") %>    
+
+    <%= check_box_tag(:interests) %>
+    <%= label_tag(:interests, "Food and cooking") %>
+
+    <%= check_box_tag(:interests) %>
+    <%= label_tag(:interests, "Movies") %>    
+
+    <%= check_box_tag(:interests) %>
+    <%= label_tag(:interests, "Photography") %>
+
+    <%= check_box_tag(:interests) %>
+    <%= label_tag(:interests, "Reading and literature") %>    
+
+    <%= check_box_tag(:interests) %>
+    <%= label_tag(:interests, "Sports") %>
+
+    <%= check_box_tag(:interests) %>
+    <%= label_tag(:interests, "Travel") %>    
+
+    <%= check_box_tag(:interests) %>
+    <%= label_tag(:interests, "Theatre, concerts, and music") %>    
 
     <div>
         <%= form.label :profile_description %>
         <%= form.text_area :profile_description %>
-    </div>    
+    </div>
 
     <div>
         <%= form.label :profile_picture %>
